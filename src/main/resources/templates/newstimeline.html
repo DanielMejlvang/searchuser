@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<a href="/news"><h2>News Timeline</h2></a>
+<form id="createForm">
+    <input type="text" id="header" value="You won't believe">
+    <input type="submit" value="Generate fake news">
+</form>
+
+<form id="find">
+    Auto fetch: <input type="checkbox" id="auto"> <br>
+    <input type="submit" value="Get the latest">
+</form>
+<div id="timeline"></div>
+
+<script type="text/javascript">
+    newsForm($("#createForm"));
+    getNewsForm($("#find"));
+
+    window.setInterval(function () {
+        var checkbox = document.getElementById('auto');
+        if(checkbox.checked){
+            console.log("Auto fetch...")
+            getLatest();
+        }
+    }, 2000);
+</script>
+
+</body>
+</html>
